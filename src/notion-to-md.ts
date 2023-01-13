@@ -463,11 +463,12 @@ export class NotionToMarkdown {
     // if text is all spaces, don't annotate
     if (text.match(/^\s*$/)) return text;
 
-    const leadingSpaceMatch = text.match(/^(\s*)/);
-    const trailingSpaceMatch = text.match(/(\s*)$/);
+    // @NOTE: disable regex matching because it breaks in safari
+    // const leadingSpaceMatch = text.match(/^(\s*)/);
+    // const trailingSpaceMatch = text.match(/(\s*)$/);
 
-    const leading_space = leadingSpaceMatch ? leadingSpaceMatch[0] : "";
-    const trailing_space = trailingSpaceMatch ? trailingSpaceMatch[0] : "";
+    // const leading_space = leadingSpaceMatch ? leadingSpaceMatch[0] : "";
+    // const trailing_space = trailingSpaceMatch ? trailingSpaceMatch[0] : "";
 
     text = text.trim();
 
@@ -479,6 +480,7 @@ export class NotionToMarkdown {
       if (annotations.underline) text = md.underline(text);
     }
 
-    return leading_space + text + trailing_space;
+    return text;
+    // return leading_space + text + trailing_space;
   }
 }
