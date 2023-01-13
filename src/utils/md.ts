@@ -77,8 +77,10 @@ export const addTabSpace = (text: string, n = 0) => {
   const tab = "	";
   for (let i = 0; i < n; i++) {
     if (text.includes("\n")) {
-      const multiLineText = text.split(/(?<=\n)/).join(tab);
-      text = tab + multiLineText;
+      // @TODO: add logic without using lookbehind regex
+      // const multiLineText = text.split(/(?<=\n)/).join(tab);
+      // text = tab + multiLineText;
+      text = tab + text;
     } else text = tab + text;
   }
   return text;
